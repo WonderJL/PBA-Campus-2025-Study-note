@@ -76,16 +76,121 @@ PBA-Campus-2025-Study-note/
     └── 01_endianness_conversion.rs
 ```
 
-## Adding New Examples
+## Adding New Examples - Step-by-Step Checklist
 
-When adding new examples:
+When adding a new example, follow these steps in order:
 
-1. Create a new file in the `examples/` directory with a descriptive name
-2. Use the format: `XX_descriptive_name.rs` where XX is a two-digit number
-3. Include a header comment explaining what the example demonstrates
-4. Add the example to `Cargo.toml` in the `[[example]]` section
-5. Add a new `run-XX` target to the `Makefile`
-6. Update this README.md file to include the new example in the list above
+### 1. Create the Example File
+```bash
+# Create new example file in examples/ directory
+# Use format: XX_descriptive_name.rs (XX = two-digit number)
+touch examples/03_your_example_name.rs
+```
+
+**File Structure:**
+```rust
+// Example XX: [Descriptive Name]
+// Brief description of what this example demonstrates
+// Key concepts and learning objectives
+
+// Optional: Add any necessary imports
+// use std::...
+
+// Your example code here
+fn main() {
+    // Implementation
+}
+```
+
+### 2. Update Cargo.toml
+Add the new example to the `[[example]]` section:
+```toml
+[[example]]
+name = "03_your_example_name"
+path = "examples/03_your_example_name.rs"
+```
+
+### 3. Update Makefile
+Add a new `run-XX` target:
+```makefile
+run-03:
+	@echo "Running Example 03: [Your Example Name]"
+	@echo "======================================"
+	cargo run --example 03_your_example_name
+```
+
+**Also update:**
+- **`list` target**: Add the new example to the list
+- **`run-all` target**: Add `@make run-03` to run all examples
+
+### 4. Update README.md
+Add the new example to the "Examples List" section:
+```markdown
+### 3. [Your Example Name] (`examples/03_your_example_name.rs`)
+- **Description**: Brief description of what the example demonstrates
+- **Key Concepts**: 
+  - Concept 1
+  - Concept 2
+  - Concept 3
+- **Run with**: `cargo run --example 03_your_example_name`
+```
+
+### 5. Test Your Changes
+```bash
+# Check that everything compiles
+make check
+
+# Test the new example
+make run-03
+
+# Test all examples still work
+make run-all
+
+# Verify the list shows your new example
+make list
+```
+
+### 6. Optional: Add Dependencies
+If your example needs external crates, add them to `Cargo.toml`:
+```toml
+[dependencies]
+your_crate = "1.0.0"
+```
+
+### 7. Commit Your Changes
+```bash
+git add .
+git commit -m "Add example 03: [Your Example Name]"
+```
+
+## Quick Reference Template
+
+**File Name:** `examples/03_your_example_name.rs`
+
+**Cargo.toml Addition:**
+```toml
+[[example]]
+name = "03_your_example_name"
+path = "examples/03_your_example_name.rs"
+```
+
+**Makefile Addition:**
+```makefile
+run-03:
+	@echo "Running Example 03: [Your Example Name]"
+	@echo "======================================"
+	cargo run --example 03_your_example_name
+```
+
+**README.md Addition:**
+```markdown
+### 3. [Your Example Name] (`examples/03_your_example_name.rs`)
+- **Description**: [Description]
+- **Key Concepts**: 
+  - [Concept 1]
+  - [Concept 2]
+- **Run with**: `cargo run --example 03_your_example_name`
+```
 
 ## Makefile Features
 
