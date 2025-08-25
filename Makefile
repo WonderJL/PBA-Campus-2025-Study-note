@@ -24,8 +24,11 @@ list:
 	@echo "Available examples:"
 	@echo "  01 - Endianness Conversion"
 	@echo "  02 - SCALE Compact Encoding"
+	@echo "  03 - SCALE Enum Encoding"
+	@echo "  04 - SCALE Vector Encoding"
+	@echo "  05 - SCALE Array Encoding"
 	@echo ""
-	@echo "Run with: make run-01 or make run-02"
+	@echo "Run with: make run-01, make run-02, make run-03, make run-04 or make run-05"
 
 # Run individual examples
 run-01:
@@ -38,11 +41,26 @@ run-02:
 	@echo "========================================="
 	cargo run --example 02_scale_compact_encoding
 
+run-03:
+	@echo "Running Example 03: SCALE Enum Encoding"
+	@echo "======================================"
+	cargo run --example 03_scale_enum_encoding
+
+run-04:
+	@echo "Running Example 04: SCALE Vector Encoding"
+	@echo "========================================"
+	cargo run --example 04_scale_vector_encoding
+
+run-05:
+	@echo "Running Example 05: SCALE Array Encoding"
+	@echo "======================================="
+	cargo run --example 05_scale_array_encoding
+
 # Template for adding more examples (uncomment and modify as needed)
-# run-03:
-# 	@echo "Running Example 03: [Example Name]"
+# run-06:
+# 	@echo "Running Example 06: [Example Name]"
 # 	@echo "================================"
-# 	cargo run --example 03_example_name
+# 	cargo run --example 06_example_name
 
 # run-03:
 # 	@echo "Running Example 03: [Example Name]"
@@ -56,6 +74,12 @@ run-all:
 	@make run-01
 	@echo ""
 	@make run-02
+	@echo ""
+	@make run-03
+	@echo ""
+	@make run-04
+	@echo ""
+	@make run-05
 	@echo ""
 	@echo "All examples completed!"
 

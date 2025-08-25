@@ -21,6 +21,31 @@ This repository contains various Rust examples for learning and reference purpos
   - Binary representation analysis
 - **Run with**: `cargo run --example 02_scale_compact_encoding`
 
+### 3. SCALE Enum Encoding (`examples/03_scale_enum_encoding.rs`)
+- **Description**: Demonstrates the SCALE encoding for Enum types, where the first byte indicates the variant (tag) and subsequent bytes hold the associated data, if any.
+- **Key Concepts**: 
+  - Enum variant tagging
+  - Encoding associated data (e.g., `u16`, `bool`)
+  - Handling void variants
+- **Run with**: `cargo run --example 03_scale_enum_encoding`
+
+### 4. SCALE Vector Encoding (`examples/04_scale_vector_encoding.rs`)
+- **Description**: Implements the SCALE encoding for vector types, showing how a compact-encoded length prefix is followed by the SCALE-encoded elements.
+- **Key Concepts**: 
+  - Compact-encoded length prefix
+  - Encoding vectors of primitive types (e.g., `u8`)
+  - Encoding vectors of compact-encoded values
+- **Run with**: `cargo run --example 04_scale_vector_encoding`
+
+### 5. SCALE Array Encoding (`examples/05_scale_array_encoding.rs`)
+- **Description**: Demonstrates the SCALE encoding for fixed-size arrays, where the size is part of the type definition and is NOT encoded in the byte stream.
+- **Key Concepts**: 
+  - Fixed-size collections (size not encoded)
+  - Direct byte representation for `u8` arrays
+  - Little-endian encoding for `u16` arrays
+  - Comparison with Vector encoding
+- **Run with**: `cargo run --example 05_scale_array_encoding`
+
 ## How to Run Examples
 
 ### Method 1: Using Makefile (Recommended)
