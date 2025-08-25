@@ -1,0 +1,12 @@
+[package]
+name = "pba-campus-2025-study-note"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[[example]]
+name = "01_endianness_conversion"
+path = "examples/01_endianness_conversion.rs"
