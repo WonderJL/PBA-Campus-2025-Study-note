@@ -23,8 +23,9 @@ help:
 list:
 	@echo "Available examples:"
 	@echo "  01 - Endianness Conversion"
+	@echo "  02 - SCALE Compact Encoding"
 	@echo ""
-	@echo "Run with: make run-01"
+	@echo "Run with: make run-01 or make run-02"
 
 # Run individual examples
 run-01:
@@ -32,11 +33,16 @@ run-01:
 	@echo "========================================"
 	cargo run --example 01_endianness_conversion
 
+run-02:
+	@echo "Running Example 02: SCALE Compact Encoding"
+	@echo "========================================="
+	cargo run --example 02_scale_compact_encoding
+
 # Template for adding more examples (uncomment and modify as needed)
-# run-02:
-# 	@echo "Running Example 02: [Example Name]"
+# run-03:
+# 	@echo "Running Example 03: [Example Name]"
 # 	@echo "================================"
-# 	cargo run --example 02_example_name
+# 	cargo run --example 03_example_name
 
 # run-03:
 # 	@echo "Running Example 03: [Example Name]"
@@ -48,6 +54,8 @@ run-all:
 	@echo "Running all examples..."
 	@echo "======================"
 	@make run-01
+	@echo ""
+	@make run-02
 	@echo ""
 	@echo "All examples completed!"
 

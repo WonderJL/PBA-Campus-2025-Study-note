@@ -12,6 +12,15 @@ This repository contains various Rust examples for learning and reference purpos
   - `to_ne_bytes()` - Convert to native-endian
 - **Run with**: `cargo run --example 01_endianness_conversion`
 
+### 2. SCALE Compact Encoding (`examples/02_scale_compact_encoding.rs`)
+- **Description**: Implements the SCALE Compact encoding scheme for efficient integer storage using variable-length encoding.
+- **Key Concepts**: 
+  - Variable-length encoding based on value magnitude
+  - Bit manipulation and byte-level operations
+  - Error handling for malformed data
+  - Binary representation analysis
+- **Run with**: `cargo run --example 02_scale_compact_encoding`
+
 ## How to Run Examples
 
 ### Method 1: Using Makefile (Recommended)

@@ -10,3 +10,7 @@ edition = "2021"
 [[example]]
 name = "01_endianness_conversion"
 path = "examples/01_endianness_conversion.rs"
+
+[[example]]
+name = "02_scale_compact_encoding"
+path = "examples/02_scale_compact_encoding.rs"
