@@ -4,7 +4,7 @@ This repository contains various Rust examples for learning and reference purpos
 
 ## Examples List
 
-### 1. Endianness Conversion (`examples/01_endianness_conversion.rs`)
+### 1. Endianness Conversion (`examples/SCALE/01_endianness_conversion.rs`)
 - **Description**: Demonstrates how to convert between different byte orderings (endianness) in Rust using built-in methods.
 - **Key Concepts**: 
   - `to_le_bytes()` - Convert to little-endian
@@ -12,7 +12,7 @@ This repository contains various Rust examples for learning and reference purpos
   - `to_ne_bytes()` - Convert to native-endian
 - **Run with**: `cargo run --example 01_endianness_conversion`
 
-### 2. SCALE Compact Encoding (`examples/02_scale_compact_encoding.rs`)
+### 2. SCALE Compact Encoding (`examples/SCALE/02_scale_compact_encoding.rs`)
 - **Description**: Implements the SCALE Compact encoding scheme for efficient integer storage using variable-length encoding.
 - **Key Concepts**: 
   - Variable-length encoding based on value magnitude
@@ -21,7 +21,7 @@ This repository contains various Rust examples for learning and reference purpos
   - Binary representation analysis
 - **Run with**: `cargo run --example 02_scale_compact_encoding`
 
-### 3. SCALE Enum Encoding (`examples/03_scale_enum_encoding.rs`)
+### 3. SCALE Enum Encoding (`examples/SCALE/03_scale_enum_encoding.rs`)
 - **Description**: Demonstrates the SCALE encoding for Enum types, where the first byte indicates the variant (tag) and subsequent bytes hold the associated data, if any.
 - **Key Concepts**: 
   - Enum variant tagging
@@ -29,7 +29,7 @@ This repository contains various Rust examples for learning and reference purpos
   - Handling void variants
 - **Run with**: `cargo run --example 03_scale_enum_encoding`
 
-### 4. SCALE Vector Encoding (`examples/04_scale_vector_encoding.rs`)
+### 4. SCALE Vector Encoding (`examples/SCALE/04_scale_vector_encoding.rs`)
 - **Description**: Implements the SCALE encoding for vector types, showing how a compact-encoded length prefix is followed by the SCALE-encoded elements.
 - **Key Concepts**: 
   - Compact-encoded length prefix
@@ -37,7 +37,7 @@ This repository contains various Rust examples for learning and reference purpos
   - Encoding vectors of compact-encoded values
 - **Run with**: `cargo run --example 04_scale_vector_encoding`
 
-### 5. SCALE Array Encoding (`examples/05_scale_array_encoding.rs`)
+### 5. SCALE Array Encoding (`examples/SCALE/05_scale_array_encoding.rs`)
 - **Description**: Demonstrates the SCALE encoding for fixed-size arrays, where the size is part of the type definition and is NOT encoded in the byte stream.
 - **Key Concepts**: 
   - Fixed-size collections (size not encoded)
@@ -97,8 +97,13 @@ PBA-Campus-2025-Study-note/
 ├── README.md              # This file
 ├── src/
 │   └── main.rs           # Main entry point
-└── examples/             # Example files
-    └── 01_endianness_conversion.rs
+└── examples/             # Example files organized by topic
+    └── SCALE/            # SCALE encoding examples
+        ├── 01_endianness_conversion.rs
+        ├── 02_scale_compact_encoding.rs
+        ├── 03_scale_enum_encoding.rs
+        ├── 04_scale_vector_encoding.rs
+        └── 05_scale_array_encoding.rs
 ```
 
 ## Adding New Examples - Step-by-Step Checklist

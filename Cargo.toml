@@ -9,20 +9,20 @@ edition = "2021"
 
 [[example]]
 name = "01_endianness_conversion"
-path = "examples/01_endianness_conversion.rs"
+path = "examples/SCALE/01_endianness_conversion.rs"
 
 [[example]]
 name = "02_scale_compact_encoding"
-path = "examples/02_scale_compact_encoding.rs"
+path = "examples/SCALE/02_scale_compact_encoding.rs"
 
 [[example]]
 name = "03_scale_enum_encoding"
-path = "examples/03_scale_enum_encoding.rs"
+path = "examples/SCALE/03_scale_enum_encoding.rs"
 
 [[example]]
 name = "04_scale_vector_encoding"
-path = "examples/04_scale_vector_encoding.rs"
+path = "examples/SCALE/04_scale_vector_encoding.rs"
 
 [[example]]
 name = "05_scale_array_encoding"
-path = "examples/05_scale_array_encoding.rs"
+path = "examples/SCALE/05_scale_array_encoding.rs"
