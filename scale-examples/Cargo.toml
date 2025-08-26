@@ -1,0 +1,29 @@
+[package]
+name = "scale-examples"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+description = "SCALE encoding examples for Polkadot blockchain development"
+
+[dependencies]
+serde_json.workspace = true
+
+[[example]]
+name = "01_endianness_conversion"
+path = "../examples/SCALE/01_endianness_conversion.rs"
+
+[[example]]
+name = "02_scale_compact_encoding"
+path = "../examples/SCALE/02_scale_compact_encoding.rs"
+
+[[example]]
+name = "03_scale_enum_encoding"
+path = "../examples/SCALE/03_scale_enum_encoding.rs"
+
+[[example]]
+name = "04_scale_vector_encoding"
+path = "../examples/SCALE/04_scale_vector_encoding.rs"
+
+[[example]]
+name = "05_scale_array_encoding"
+path = "../examples/SCALE/05_scale_array_encoding.rs"

@@ -12,6 +12,8 @@ help:
 	@echo "  make list          - List all available examples"
 	@echo "  make run-01        - Run example 01 (endianness conversion)"
 	@echo "  make run-XX        - Run example XX (replace XX with example number)"
+	@echo "  make run-06        - Run example 06 (demo mode)"
+	@echo "  make run-06-live   - Run example 06 (live connection)"
 	@echo "  make run-all       - Run all examples sequentially"
 	@echo "  make check         - Check all examples compile without running"
 	@echo "  make build         - Build all examples"
@@ -27,34 +29,45 @@ list:
 	@echo "  03 - SCALE Enum Encoding"
 	@echo "  04 - SCALE Vector Encoding"
 	@echo "  05 - SCALE Array Encoding"
+	@echo "  06 - Polkadot Header Subscription"
 	@echo ""
-	@echo "Run with: make run-01, make run-02, make run-03, make run-04 or make run-05"
+	@echo "Run with: make run-01, make run-02, make run-03, make run-04, make run-05, make run-06, or make run-06-live"
 
 # Run individual examples
 run-01:
 	@echo "Running Example 01: Endianness Conversion"
 	@echo "========================================"
-	cargo run --example 01_endianness_conversion
+	cargo run -p scale-examples --example 01_endianness_conversion
 
 run-02:
 	@echo "Running Example 02: SCALE Compact Encoding"
 	@echo "========================================="
-	cargo run --example 02_scale_compact_encoding
+	cargo run -p scale-examples --example 02_scale_compact_encoding
 
 run-03:
 	@echo "Running Example 03: SCALE Enum Encoding"
 	@echo "======================================"
-	cargo run --example 03_scale_enum_encoding
+	cargo run -p scale-examples --example 03_scale_enum_encoding
 
 run-04:
 	@echo "Running Example 04: SCALE Vector Encoding"
 	@echo "========================================"
-	cargo run --example 04_scale_vector_encoding
+	cargo run -p scale-examples --example 04_scale_vector_encoding
 
 run-05:
 	@echo "Running Example 05: SCALE Array Encoding"
 	@echo "======================================="
-	cargo run --example 05_scale_array_encoding
+	cargo run -p scale-examples --example 05_scale_array_encoding
+
+run-06:
+	@echo "Running Example 06: Polkadot Header Subscription (Demo Mode)"
+	@echo "=========================================================="
+	DEMO_MODE=true cargo run -p json-rpc-examples --example 01_polkadot_header_subscription
+
+run-06-live:
+	@echo "Running Example 06: Polkadot Header Subscription (Live Mode)"
+	@echo "=========================================================="
+	DEMO_MODE=false cargo run -p json-rpc-examples --example 01_polkadot_header_subscription
 
 # Template for adding more examples (uncomment and modify as needed)
 # run-06:
@@ -81,17 +94,19 @@ run-all:
 	@echo ""
 	@make run-05
 	@echo ""
+	@make run-06
+	@echo ""
 	@echo "All examples completed!"
 
 # Check that all examples compile
 check:
 	@echo "Checking all examples compile..."
-	cargo check --examples
+	cargo check --workspace
 
 # Build all examples
 build:
 	@echo "Building all examples..."
-	cargo build --examples
+	cargo build --workspace
 
 # Clean build artifacts
 clean:
@@ -122,7 +137,7 @@ fmt:
 # Lint all example files
 lint:
 	@echo "Linting all Rust files..."
-	cargo clippy --examples
+	cargo clippy --workspace
 
 # Quick validation
 validate: check fmt lint

@@ -46,6 +46,15 @@ This repository contains various Rust examples for learning and reference purpos
   - Comparison with Vector encoding
 - **Run with**: `cargo run --example 05_scale_array_encoding`
 
+### 6. Polkadot Header Subscription (`examples/JSON-RPC/01_polkadot_header_subscription.rs`)
+- **Description**: Demonstrates how to subscribe to Polkadot mainnet block headers using JSON-RPC over WebSocket.
+- **Key Concepts**: 
+  - WebSocket connection to Polkadot mainnet
+  - JSON-RPC subscription using `chain_subscribeNewHeads`
+  - Real-time header payload processing
+  - Async/await patterns with Tokio
+- **Run with**: `make run-06` (demo mode) or `make run-06-live` (live connection)
+
 ## How to Run Examples
 
 ### Method 1: Using Makefile (Recommended)
@@ -69,7 +78,8 @@ make check
 ### Method 2: Using Cargo Examples
 ```bash
 # Run a specific example
-cargo run --example 01_endianness_conversion
+cargo run -p scale-examples --example 01_endianness_conversion
+cargo run -p json-rpc-examples --example 01_polkadot_header_subscription
 
 # List all available examples
 cargo run --example
@@ -78,14 +88,14 @@ cargo run --example
 ### Method 3: Direct Compilation
 ```bash
 # Compile and run directly
-rustc examples/01_endianness_conversion.rs -o endianness_example
+rustc examples/SCALE/01_endianness_conversion.rs -o endianness_example
 ./endianness_example
 ```
 
 ### Method 4: Using Cargo Run
 ```bash
 # Copy the example content to src/main.rs temporarily
-cp examples/01_endianness_conversion.rs src/main.rs
+cp examples/SCALE/01_endianness_conversion.rs src/main.rs
 cargo run
 ```
 
@@ -93,17 +103,22 @@ cargo run
 
 ```
 PBA-Campus-2025-Study-note/
-├── Cargo.toml              # Project configuration
+├── Cargo.toml              # Workspace configuration
 ├── README.md              # This file
-├── src/
-│   └── main.rs           # Main entry point
-└── examples/             # Example files organized by topic
-    └── SCALE/            # SCALE encoding examples
-        ├── 01_endianness_conversion.rs
-        ├── 02_scale_compact_encoding.rs
-        ├── 03_scale_enum_encoding.rs
-        ├── 04_scale_vector_encoding.rs
-        └── 05_scale_array_encoding.rs
+├── scale-examples/        # SCALE encoding examples package
+│   └── Cargo.toml         # SCALE package dependencies
+├── json-rpc-examples/     # JSON-RPC examples package
+│   └── Cargo.toml         # JSON-RPC package dependencies
+└── examples/              # Example files organized by topic
+    ├── SCALE/             # SCALE encoding examples
+    │   ├── 01_endianness_conversion.rs
+    │   ├── 02_scale_compact_encoding.rs
+    │   ├── 03_scale_enum_encoding.rs
+    │   ├── 04_scale_vector_encoding.rs
+    │   └── 05_scale_array_encoding.rs
+    └── JSON-RPC/          # JSON-RPC examples
+        ├── 01_polkadot_header_subscription.rs
+        └── README.md
 ```
 
 ## Adding New Examples - Step-by-Step Checklist
@@ -237,6 +252,31 @@ The included `Makefile` provides convenient commands for managing your examples:
 - **`make lint`** - Lint all Rust files with clippy
 - **`make validate`** - Run check, format, and lint
 - **`make info`** - Show project information
+
+## Workspace Structure
+
+This project uses Cargo workspaces to organize examples by topic and manage dependencies efficiently:
+
+### Packages
+
+- **`scale-examples`**: SCALE encoding examples with minimal dependencies
+- **`json-rpc-examples`**: JSON-RPC examples with networking and crypto dependencies
+
+### Benefits
+
+- **Modular Dependencies**: Each package only includes the dependencies it needs
+- **Faster Compilation**: Dependencies are shared across workspace members
+- **Better Organization**: Examples are grouped by functionality
+- **Easier Maintenance**: Each package can be developed and tested independently
+
+### Adding New Example Groups
+
+To add a new example group:
+
+1. Create a new package directory: `mkdir new-examples`
+2. Add `Cargo.toml` with package configuration
+3. Add to workspace members in root `Cargo.toml`
+4. Update Makefile with new run targets
 
 ## Requirements
 
